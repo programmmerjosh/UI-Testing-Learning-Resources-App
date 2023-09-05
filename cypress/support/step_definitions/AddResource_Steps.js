@@ -15,16 +15,16 @@ Given("I click on the add resource tab", () => {
   homepage.clickOn_add_Resource_Tab();
 });
 
-When("I type a title", () => {
-  addResource.type_Title("Josh Blog");
-});
+When(
+  "I type a title {string} and a description {string}",
+  (title, description) => {
+    addResource.type_Title(title);
+    addResource.type_Description(description);
+  }
+);
 
-When("I type a description", () => {
-  addResource.type_Description("Whatever description");
-});
-
-When("I type a link", () => {
-  addResource.type_Link("https://www.think-write-grow.com");
+When("I type a link {string}", (link) => {
+  addResource.type_Link(link);
 });
 
 When("I click on the add resource button", () => {
@@ -32,8 +32,8 @@ When("I click on the add resource button", () => {
 });
 
 Then(
-  `I should have a new learning resource card with the title "Josh Blog"`,
-  () => {
-    cy.get("h3").contains("Josh Blog").should("have.class", "title");
+  `I should have a new learning resource card with the title {string}`,
+  (title) => {
+    cy.get("h3").contains(title).should("have.class", "title");
   }
 );
