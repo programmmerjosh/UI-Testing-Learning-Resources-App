@@ -4,9 +4,7 @@ import Base_PO from "./Base_PO";
 
 class Add_Resource_PO extends Base_PO {
   elements = {
-    // comment_TextField: () => cy.get('textarea[name="message"]'),
     add_Resource_Button: () => cy.get("#submit-add-resource-button"),
-    // submission_Header_Text: () => cy.xpath("//h1 | //body"),
   };
 
   type_Title(title) {
@@ -17,6 +15,16 @@ class Add_Resource_PO extends Base_PO {
   }
   type_Link(link) {
     cy.get("#link").type(link);
+  }
+
+  isBlank_Title() {
+    cy.get("#title").should("be.empty");
+  }
+  isBlank_Description() {
+    cy.get("#description").should("be.empty");
+  }
+  isBlank_Link() {
+    cy.get("#link").should("be.empty");
   }
 
   clickOn_add_Resource_Submit_Button() {
