@@ -24,39 +24,39 @@ Feature: Learning Resources App - Add Resource
         And I type a description '<description>'
         And I leave the link blank
         And I click on the add resource button
-        Then I should be prompted with a modal that says '<modalText>'
+        Then I should be prompted with a modal saying that one textfield is empty
 
         Examples:
-            | title            | description                              | modalText                                          |
-            | Josh Blog        | Blog Website created by Josh without url | Unfortunately, at least one input value is invalid |
-            | Udemy            | My courses on Udemy.com without url      | Unfortunately, at least one input value is invalid |
-            | Notes In Spanish | Notes in Spanish podcast without url     | Unfortunately, at least one input value is invalid |
+            | title            | description                              |
+            | Josh Blog        | Blog Website created by Josh without url |
+            | Udemy            | My courses on Udemy.com without url      |
+            | Notes In Spanish | Notes in Spanish podcast without url     |
 
     Scenario Outline: Invalid Resources To Add - Omit Title
         And I leave the title blank
         And I type a description '<description>'
         And I type a link '<link>'
         And I click on the add resource button
-        Then I should be prompted with a modal that says '<modalText>'
+        Then I should be prompted with a modal saying that one textfield is empty
 
         Examples:
-            | description                                | link                                                       | modalText                                          |
-            | Blog Website created by Josh without title | https://www.think-write-grow.com                           | Unfortunately, at least one input value is invalid |
-            | My courses on Udemy.com without title      | https://www.udemy.com/home/my-courses/learning/            | Unfortunately, at least one input value is invalid |
-            | Notes in Spanish podcast without title     | https://www.notesinspanish.com/category/beginners-podcast/ | Unfortunately, at least one input value is invalid |
+            | description                                | link                                                       |
+            | Blog Website created by Josh without title | https://www.think-write-grow.com                           |
+            | My courses on Udemy.com without title      | https://www.udemy.com/home/my-courses/learning/            |
+            | Notes in Spanish podcast without title     | https://www.notesinspanish.com/category/beginners-podcast/ |
 
     Scenario Outline: Invalid Resources To Add - Omit Description
         And I type a title '<title>'
         And I leave the description blank
         And I type a link '<link>'
         And I click on the add resource button
-        Then I should be prompted with a modal that says '<modalText>'
+        Then I should be prompted with a modal saying that one textfield is empty
 
         Examples:
-            | title            | link                                                       | modalText                                          |
-            | Josh Blog        | https://www.think-write-grow.com                           | Unfortunately, at least one input value is invalid |
-            | Udemy            | https://www.udemy.com/home/my-courses/learning/            | Unfortunately, at least one input value is invalid |
-            | Notes In Spanish | https://www.notesinspanish.com/category/beginners-podcast/ | Unfortunately, at least one input value is invalid |
+            | title            | link                                                       |
+            | Josh Blog        | https://www.think-write-grow.com                           |
+            | Udemy            | https://www.udemy.com/home/my-courses/learning/            |
+            | Notes In Spanish | https://www.notesinspanish.com/category/beginners-podcast/ |
 
     Scenario Outline: Invalid Resources To Add - Insert text instead of URL
         And I type a title '<title>'

@@ -47,15 +47,17 @@ When("I click on the add resource button", () => {
 Then(
   `I should have a new learning resource card with the title {string}`,
   (title) => {
-    cy.get("h3").contains(title).should("have.class", "title");
+    addResource.confirm_New_Resource_Exists(title);
   }
 );
 
-// failed path results
-Then(`I should be prompted with a modal that says {string}`, (modalText) => {
-  cy.get("dialog section").contains(modalText);
-});
+// sad path results
+Then(
+  `I should be prompted with a modal saying that one textfield is empty`,
+  () => {
+    addResource.failedTo_CreateNewResource_WithDialog();
+  }
+);
 Then(`I should be prompted with a tooltip that says Insert a URL`, () => {
-  // this is probably not good enough but it passes for now
-  cy.get("#link").focused();
+  addResource.failedTo_CreateNewResource();
 });

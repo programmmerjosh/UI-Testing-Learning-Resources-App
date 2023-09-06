@@ -30,5 +30,20 @@ class Add_Resource_PO extends Base_PO {
   clickOn_add_Resource_Submit_Button() {
     this.elements.add_Resource_Button().click();
   }
+
+  confirm_New_Resource_Exists(title) {
+    cy.get("h3").contains(title).should("have.class", "title");
+  }
+
+  failedTo_CreateNewResource_WithDialog() {
+    cy.get("dialog section").contains(
+      "Unfortunately, at least one input value is invalid"
+    );
+    this.failedTo_CreateNewResource();
+  }
+
+  failedTo_CreateNewResource() {
+    cy.get("h3").should("not.exist");
+  }
 }
 export default Add_Resource_PO;
